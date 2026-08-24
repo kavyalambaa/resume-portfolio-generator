@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Resume Portfolio Generator</title>
+<meta name="description" content="Upload your resume and turn it into a professional portfolio, powered by AI.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="frontend.css">
+</head>
+<body>
+
+<!-- Ambient background -->
+<div class="bg-field" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+</div>
+
+<div class="page">
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+          <path d="M3 2H11L15 6V16H3V2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M11 2V6H15" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M5.5 9.5H12.5M5.5 12H10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-name">Resume<em>&nbsp;→&nbsp;</em>Portfolio</span>
+    </div>
+  </header>
+
+  <main class="hero" id="main">
+
+    <p class="eyebrow">AI-generated, from what's actually on your resume</p>
+    <h1 class="headline">Turn your resume into <span class="accent-word">a portfolio</span></h1>
+    <p class="subhead">Upload a resume and Gemini reads it, structures it, and builds a professional portfolio site — in a few seconds, no editing required.</p>
+
+    <!-- ============ STAGE CARD ============ -->
+    <!-- data-stage cycles: upload | generating | success | genfail -->
+    <section class="stage-card" id="stageCard" data-stage="upload" aria-live="polite">
+
+      <!-- Step index: purely CSS-driven off #stageCard's data-stage -->
+      <div class="steps" aria-hidden="true">
+        <div class="step" data-step="1">
+          <span class="step-num">01</span>
+          <span class="step-label">Upload</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="2">
+          <span class="step-num">02</span>
+          <span class="step-label">Generate</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3">
+          <span class="step-num">03</span>
+          <span class="step-label">Preview</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" data-step="4">
+          <span class="step-num">04</span>
+          <span class="step-label">Download</span>
+        </div>
+      </div>
+
+      <!-- ---- EMPTY / SELECTED (upload) stage ---- -->
+      <div class="stage stage-upload" data-stage-panel="upload">
+
+        <div class="dropzone" id="dropzone" tabindex="0" role="button"
+             aria-label="Upload your resume, drag and drop or choose a file">
+          <div class="dropzone-scan" aria-hidden="true"></div>
+
+          <div class="dropzone-empty" id="dropzoneEmpty">
+            <span class="dropzone-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M15 20V6M15 6L9.5 11.5M15 6L20.5 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 22.5V24.5C6 25.6 6.9 26.5 8 26.5H22C23.1 26.5 24 25.6 24 24.5V22.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <p class="dropzone-title">Drag &amp; drop your resume here</p>
+            <p class="dropzone-or">or</p>
+            <span class="btn btn-secondary btn-choose">Choose File</span>
+            <p class="dropzone-formats">Supported: <strong>.TXT · .DOCX</strong> &middot; max 5&nbsp;MB</p>
+          </div>
+
+          <div class="dropzone-file" id="dropzoneFile" hidden>
+            <span class="file-icon" id="fileTypeIcon" aria-hidden="true">TXT</span>
+            <div class="file-meta">
+              <p class="file-name" id="fileName">resume.docx</p>
+              <p class="file-sub"><span id="fileTypeLabel">DOCX</span> &middot; <span id="fileSize">—</span></p>
+            </div>
+            <div class="file-actions">
+              <button type="button" class="icon-btn" id="replaceFileBtn" aria-label="Replace file" title="Replace file">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.5 8a5.5 5.5 0 0 1 9.44-3.86M13.5 8a5.5 5.5 0 0 1-9.44 3.86" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M12 2.5V5.5H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 13.5V10.5H7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="icon-btn icon-btn-danger" id="removeFileBtn" aria-label="Remove file" title="Remove file">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <input type="file" id="fileInput" accept=".txt,.docx" hidden>
+        </div>
+
+        <p class="alert alert-error" id="alertBox" role="alert" hidden></p>
+
+        <button type="button" class="btn btn-primary btn-generate" id="generateBtn" disabled>
+          <span>Generate Portfolio</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <!-- ---- GENERATING stage ---- -->
+      <div class="stage stage-generating" data-stage-panel="generating" hidden>
+        <div class="assemble" aria-hidden="true">
+          <span class="assemble-block"></span>
+          <span class="assemble-block"></span>
+          <span class="assemble-block"></span>
+          <span class="assemble-block"></span>
+          <span class="assemble-block"></span>
+          <span class="assemble-block"></span>
+        </div>
+        <p class="generating-status" id="generatingStatus" aria-live="polite">Analyzing your resume&hellip;</p>
+        <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+      </div>
+
+      <!-- ---- SUCCESS stage ---- -->
+      <div class="stage stage-success" data-stage-panel="success" hidden>
+        <div class="success-badge" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 13.5L11 18.5L20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="success-title">Your portfolio is ready.</p>
+        <p class="success-sub">Built from <span id="successFileName">your resume</span> — take a look, then download it.</p>
+
+        <div class="success-actions">
+          <button type="button" class="btn btn-secondary" id="previewBtn">Preview Portfolio</button>
+          <button type="button" class="btn btn-primary" id="downloadBtn">
+            Download portfolio.html
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M7.5 2V10M7.5 10L4 6.5M7.5 10L11 6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 12H12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <button type="button" class="link-btn" id="resetBtn">Upload another resume</button>
+      </div>
+
+      <!-- ---- GENERATION ERROR stage ---- -->
+      <div class="stage stage-genfail" data-stage-panel="genfail" hidden>
+        <div class="fail-badge" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.3" r="1.1" fill="currentColor"/><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <p class="fail-title">Generation failed</p>
+        <p class="fail-sub" id="genFailReason">The backend couldn't process this resume. Nothing was saved.</p>
+        <div class="success-actions">
+          <button type="button" class="btn btn-primary" id="retryBtn">Try Again</button>
+        </div>
+        <button type="button" class="link-btn" id="failResetBtn">Go back to upload</button>
+      </div>
+
+    </section>
+    <!-- ============ /STAGE CARD ============ -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Your resume is processed to generate your portfolio and is not stored or shared.</p>
+  </footer>
+
+</div>
+
+<!-- Preview modal -->
+<div class="modal" id="previewModal" hidden>
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Portfolio preview">
+    <div class="modal-bar">
+      <span>Portfolio preview</span>
+      <button type="button" class="icon-btn" id="closePreviewBtn" aria-label="Close preview">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <iframe id="previewFrame" title="Portfolio preview" sandbox="allow-same-origin"></iframe>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
