@@ -1,0 +1,78 @@
+AARAV SHARMA
+
+Computer Science Engineering Student | AI & Full-Stack Developer
+
+ABOUT
+Computer Science Engineering student interested in artificial intelligence,
+web development, and software engineering. Experienced in building
+Python-based applications and responsive web projects. Interested in
+developing practical technology solutions and learning new tools.
+
+EDUCATION
+B.Tech in Computer Science Engineering
+GLA University, Mathura
+2024 - 2028
+Currently pursuing undergraduate studies in Computer Science Engineering.
+
+SKILLS
+Python
+Java
+JavaScript
+HTML
+CSS
+Flask
+Git
+GitHub
+SQL
+Firebase
+
+PROJECTS
+
+AI Resume Portfolio Generator
+An AI-powered application that reads a user's resume and automatically
+generates structured portfolio content using the Gemini API.
+Technologies: Python, Gemini API, JSON, HTML, CSS
+Link: https://github.com/example/ai-resume-portfolio
+
+Sehat Go
+A health monitoring web application designed to display health-related
+sensor information including heart rate, oxygen level, temperature,
+and other readings.
+Technologies: HTML, CSS, JavaScript, Firebase, ESP32
+Link: https://github.com/example/sehat-go
+
+Togetherly
+A relationship-focused web application containing shared memories,
+a relationship timer, themes, chat functionality, and interactive
+features for couples.
+Technologies: HTML, CSS, JavaScript, Supabase
+Link: https://github.com/example/togetherly
+
+EXPERIENCE
+
+Web Development Intern
+TechNova Solutions
+June 2026 - July 2026
+Worked on responsive web interfaces and assisted in developing
+frontend components using HTML, CSS, and JavaScript. Collaborated
+with team members to improve website usability and performance.
+
+ACHIEVEMENTS
+
+Completed an AI and Machine Learning development bootcamp.
+
+Built multiple personal projects using Python, JavaScript, and
+modern web technologies.
+
+Participated in university-level technology and hackathon projects.
+
+CERTIFICATIONS
+
+Microsoft Azure Fundamentals (AZ-900)
+
+CONTACT
+Email: aarav.sharma@example.com
+Phone: +91 9876543210
+LinkedIn: https://www.linkedin.com/in/example-aarav-sharma
+GitHub: https://github.com/example-aarav-sharma
+Website: https://aaravsharma.example.com
