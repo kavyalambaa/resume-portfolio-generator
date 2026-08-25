@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ full_name }} | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+    {{ style_css }}
+</style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">{{ full_name }}</a>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container hero-content">
+
+            <p class="hero-label">WELCOME TO MY PORTFOLIO</p>
+
+            <h1>{{ full_name }}</h1>
+
+            <p class="headline">{{ headline }}</p>
+
+            {{ project_button }}
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="container">
+
+                <p class="section-label">01 — ABOUT</p>
+
+                <h2>About Me</h2>
+
+                <p class="about-text">
+                    {{ about }}
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Skills -->
+        <section id="skills" class="section section-alt">
+            <div class="container">
+
+                <p class="section-label">02 — SKILLS</p>
+
+                <h2>What I Work With</h2>
+
+                <div class="skills">
+                    {{ skills }}
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="container">
+
+                <p class="section-label">03 — PROJECTS</p>
+
+                <h2>Featured Projects</h2>
+
+                <div class="projects-grid">
+                    {{ projects }}
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Education -->
+        <section id="education" class="section section-alt">
+            <div class="container">
+
+                <p class="section-label">04 — EDUCATION</p>
+
+                <h2>Education</h2>
+
+                <div class="education-list">
+                    {{ education }}
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="container">
+
+                <p class="section-label">05 — EXPERIENCE</p>
+
+                <h2>Experience</h2>
+
+                <div class="experience-list">
+                    {{ experience }}
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements" class="section section-alt">
+            <div class="container">
+
+                <p class="section-label">06 — ACHIEVEMENTS</p>
+
+                <h2>Achievements</h2>
+
+                <div class="achievements-list">
+                    {{ achievements }}
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Contact -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+
+                <p class="section-label">07 — CONTACT</p>
+
+                <h2>Let's Connect</h2>
+
+                <div class="contact-content">
+                    {{ contact }}
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                Generated with AI Resume Portfolio Generator
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
